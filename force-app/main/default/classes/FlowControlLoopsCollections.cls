@@ -45,14 +45,17 @@ public with sharing class FlowControlLoopsCollections {
      * @return true if the person is eligible to vote, false otherwise.
      */
     public static Boolean votingEligibility(Integer age) {
-        if (age > 18) {
+        if (age >= 18) {
 
-            return True;
+            return true;
 
         }
 
-        return False; // Replace null with the variable you used to store the result
+       return false; // returns false if age is less than 18
+
     }
+
+    
 
     /**
      * Finds the maximum of two numbers.
@@ -63,18 +66,17 @@ public with sharing class FlowControlLoopsCollections {
      * @return The maximum of the two numbers, or null if either number is null.
      */
     public static Integer findMax(Integer num1, Integer num2) {
-        // Initialize largestNum as null
-        Integer largestNum = null;
         // Evaluate if either input is null
         if (num1 == null || num2 == null) {
             return null; // If either number is null return null
         }
+        else {
+            //evaluates the greater of the two numbers and returns that number
+            Integer maxNumber = Math.max(num1, num2); 
 
-        if (num1 > num2) {
-            return num1; //num1 is greater, so return num1 directly    
-        } else {
-            return num2; //num2 is greater  or equal to num1 so return num2 diretly
+            return maxnumber; // returns the maxNumber between num1 and num2
         }
+        
     }
 
 
@@ -88,7 +90,7 @@ public with sharing class FlowControlLoopsCollections {
     public static String checkNumber(Integer a) {
         // Check if Integer a is null
         if (a == null) {
-            return 'Null';
+            return null;
             
         }
         // Check if Integer a is Positive 
@@ -169,15 +171,15 @@ public with sharing class FlowControlLoopsCollections {
     public static String determineGrade(Integer score) {
         // If else statements return a Grade for each score range
         if (score >= 90) {
-           return 'Grade A'; 
+           return 'A'; 
         } else if (score >= 80) {
-           return 'Grade B';
+           return 'B';
         } else if (score >= 70) {
-           return 'Grade C';
+           return 'C';
         } else if (score >= 60) {
-           return 'Grade D';
+           return 'D';
         } else {
-           return 'Grade F';
+           return 'F';
         }
     }
 
@@ -208,8 +210,8 @@ public with sharing class FlowControlLoopsCollections {
         // Use a for loop to append 'Hello World!;' to the result string three times
          for (Integer i = 1; i <= 3; i++){
             result += 'Hello World!';  
-            if (i < 3) {
-                result += ';'; // Add a semicolon after each iteration
+            if (i <= 3) {
+                result += '; '; // Add a semicolon after each iteration and a space
             }
             
          }
@@ -376,24 +378,17 @@ public with sharing class FlowControlLoopsCollections {
      * @return The total value in dollars, stopped at the point when it exceeds 40 dollars.
      */
     public static Decimal countMoney() {
-        // The list of money in the wallet, represented in dollars and cents
         List<Decimal> moneyInWallet = new List<Decimal>{0.50, 10, 3.84, 24.60, 9.08, 50, 4.90}; //DO NOT CHANGE
-        
-        // Initialize the total to 0 dollars
+    
         Decimal total = 0;
-        
-        // Loop through the money in the wallet
+    
         for (Decimal amount : moneyInWallet) {
-        // Check if adding the current amount exceeds 40 dollars    
-            if (total + amount > 40) {
-        // Stop counting if the total exceeds 40 dollars
+            total += amount;
+            if (total >= 40) {
                 break; 
-                
-            }
-        // Add the curent amount to the total
-        total += amount;    
+            }    
         }
-        return total; // Replace the total value in dollars
+        return total;
     }
 
     /**
@@ -402,21 +397,17 @@ public with sharing class FlowControlLoopsCollections {
      * @return The Map of fruits and their quantities.
      */
     public static Map<String, Integer> addItemsToMap() {
-        // Initialize an empty Map
-    Map<String, Integer> newMap = new Map<String, Integer>();
-        // Add key-value pairs to the Map
-        // add Apples => 5
-        newMap.put('Apples', 5);
-        // add Oranges => 10
-        newMap.put('Oranges', 10);
-        // add Bananas => 15
-        newMap.put('Bananas', 15);
-        // add Pears => 20
-        newMap.put('Pears', 20);
-        // add Grapes => 25
-        newMap.put('Grapes', 25);
+        // Initialize the map with values prepopulated
+    Map<String, Integer> newMap = new Map<String, Integer>{
+        'Apples' => 5,
+        'Oranges' => 10,
+        'Bananas' => 15,
+        'Pears' => 20,
+        'Grapes' => 25
 
-        return newMap; // Replace null with the variable you used to store the result
+    };
+
+        return newMap; // Return the initialized map
     }
 
     /**
